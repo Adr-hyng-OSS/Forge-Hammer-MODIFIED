@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "lib": ["ES2021", "DOM"],
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "sourceMap": false,
+    "outDir": "Behavior Pack/scripts", 
+  },
+  "include": [
+    "src",
+    "node_modules/@types/mojang-minecraft/index.d.ts"
+  ],
+  "exclude": [
+    "Behavior Pack/scripts"
+  ]
+}
+
+// I copied this from Jayly's Dev Repo xd
