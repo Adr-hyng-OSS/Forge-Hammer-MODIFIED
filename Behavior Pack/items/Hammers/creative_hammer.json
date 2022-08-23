@@ -1,0 +1,95 @@
+{
+	// DEPRECATED
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "ihg:creative_hammer",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:hand_equipped": true,
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.pickaxe"
+			},
+			"minecraft:icon": {
+				"texture": "creative_hammer"
+			},
+			"minecraft:can_destroy_in_creative": true,
+			"minecraft:on_use": {
+				"on_use": {
+					"event": "ihg:creative_break"
+				}
+			}
+		},
+		"events": {
+			"ihg:creative_break": {
+				"sequence": [
+					{
+						"condition": "query.cardinal_player_facing==0",
+						"run_command": {
+							"command": [
+								"fill ~-1 ~-1 ~1 ~1 ~-6 ~-1 air",
+								"playsound use.chain @a[r=3] ~ ~ ~ 1 1"
+							],
+							"target": "holder"
+						}
+					},
+					{
+						"condition": "query.cardinal_player_facing==1",
+						"run_command": {
+							"command": [
+								"fill ~-1 ~2 ~1 ~1 ~7 ~-1 air",
+								"playsound use.chain @a[r=3] ~ ~ ~ 1 1"
+							],
+							"target": "holder"
+						}
+					},
+					{
+						"condition": "query.cardinal_player_facing==2",
+						"run_command": {
+							"command": [
+								"fill ~-1 ~ ~-1 ~1 ~2 ~-6 air",
+								"playsound use.chain @a[r=3] ~ ~ ~ 1 1"
+							],
+							"target": "holder"
+						}
+					},
+					{
+						"condition": "query.cardinal_player_facing==3",
+						"run_command": {
+							"command": [
+								"fill ~-1 ~ ~1 ~1 ~2 ~6 air",
+								"playsound use.chain @a[r=3] ~ ~ ~ 1 1"
+							],
+							"target": "holder"
+						}
+					},
+					{
+						"condition": "query.cardinal_player_facing==4",
+						"run_command": {
+							"command": [
+								"fill ~-1 ~ ~-1 ~-6 ~2 ~1 air",
+								"playsound use.chain @a[r=3] ~ ~ ~ 1 1"
+							],
+							"target": "holder"
+						}
+					},
+					{
+						"condition": "query.cardinal_player_facing==5",
+						"run_command": {
+							"command": [
+								"fill ~1 ~ ~-1 ~6 ~2 ~1 air",
+								"playsound use.chain @a[r=3] ~ ~ ~ 1 1"
+							],
+							"target": "holder"
+						}
+					},
+					{
+						"swing": {}
+					}
+				]
+			}
+		}
+	}
+}

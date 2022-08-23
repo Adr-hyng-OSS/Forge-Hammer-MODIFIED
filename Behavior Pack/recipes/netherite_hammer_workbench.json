@@ -1,0 +1,27 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:netherite_hammer"
+		},
+		"tags": [
+			"workbench"
+		],
+		"pattern": [
+			"AB "
+		],
+		"key": {
+			"B": {
+				"item": "ihg:netherite_hammer_head"
+			},
+			"A": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:netherite_hammer"
+			}
+		]
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"pools": [
+		{
+			"entries": [
+				{
+					"type": "item",
+					"name": "ihg:molten_gold"
+				}
+			],
+			"rolls": 1
+		}
+	]
+}

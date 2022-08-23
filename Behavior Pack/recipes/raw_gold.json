@@ -1,0 +1,30 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:gold"
+		},
+		"tags": [
+			"crafting_table",
+			"workbench"
+		],
+		"pattern": [
+			"X"
+		],
+		"key": {
+			"X": {
+				"item": "ihg:gold_bucket"
+			}
+		},
+		"result": [
+			{
+				"item": "minecraft:raw_gold",
+				"count": 8
+			},
+			{
+				"item": "minecraft:bucket",
+				"count": 1
+			}
+		]
+	}
+}

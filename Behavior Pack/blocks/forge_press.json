@@ -1,0 +1,212 @@
+{
+	"format_version": "1.17.20",
+	"minecraft:block": {
+		"description": {
+			"identifier": "ihg:forge_press",
+			"properties": {
+				"ihg:pressed": [
+					false,
+					true
+				],
+				"ihg:block_rotation": [
+					2,
+					3,
+					4,
+					5
+				]
+			}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.forge_press",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "polished_blackstone_bricks",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"button": {
+					"texture": "planks",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"iron": {
+					"texture": "iron_block",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"planks": {
+					"texture": "planks",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"panel": {
+					"texture": "iron_block",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"top": {
+					"texture": "blackstone",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"blackstone": {
+					"texture": "blackstone",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				}
+			},
+			"minecraft:on_interact": {
+				"event": "change"
+			},
+			"minecraft:creative_category": {
+				"category": "Construction"
+			},
+			"minecraft:on_player_placing": {
+				"event": "ihg:update_rotation"
+			},
+			"minecraft:explosion_resistance": 6,
+			"minecraft:destroy_time": 1
+		},
+		"events": {
+			"change": {
+				"sequence": [
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='molten_iron'&&query.block_property('ihg:pressed')==false",
+						"set_block_property": {
+							"ihg:pressed": true
+						},
+						"decrement_stack": {},
+						"run_command": {
+							"command": [
+								"playsound block.stonecutter.use @a[r=5] ~ ~ ~"
+							]
+						},
+						"spawn_loot": {
+							"table": "loot_tables/bucket_iron_hammer_head.json"
+						}
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='molten_diamond'&&query.block_property('ihg:pressed')==false",
+						"set_block_property": {
+							"ihg:pressed": true
+						},
+						"run_command": {
+							"command": [
+								"playsound block.stonecutter.use @a[r=5] ~ ~ ~"
+							]
+						},
+						"spawn_loot": {
+							"table": "loot_tables/diamond_bucket_hammer_head.json"
+						},
+						"decrement_stack": {}
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='molten_gold'&&query.block_property('ihg:pressed')==false",
+						"set_block_property": {
+							"ihg:pressed": true
+						},
+						"decrement_stack": {},
+						"run_command": {
+							"command": [
+								"playsound block.stonecutter.use @a[r=5] ~ ~ ~"
+							]
+						},
+						"spawn_loot": {
+							"table": "loot_tables/bucket_gold_hammer_head.json"
+						}
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='molten_netherite'&&query.block_property('ihg:pressed')==false",
+						"set_block_property": {
+							"ihg:pressed": true
+						},
+						"decrement_stack": {},
+						"run_command": {
+							"command": [
+								"playsound block.stonecutter.use @a[r=5] ~ ~ ~"
+							]
+						},
+						"spawn_loot": {
+							"table": "loot_tables/netherite_hammer_head.json"
+						}
+					}
+				]
+			},
+			"ticked": {
+				"set_block_property": {
+					"ihg:pressed": false
+				}
+			},
+			"ihg:update_rotation": {
+				"set_block_property": {
+					"ihg:block_rotation": "query.cardinal_facing_2d"
+				}
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('ihg:pressed') == true",
+				"components": {
+					"minecraft:ticking": {
+						"looping": false,
+						"range": [
+							1,
+							1
+						],
+						"on_tick": {
+							"event": "ticked"
+						}
+					},
+					"minecraft:geometry": "geometry.forge_press_pressed"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 2",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 3",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						180,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 4",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 5",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						270,
+						0
+					]
+				}
+			}
+		]
+	}
+}

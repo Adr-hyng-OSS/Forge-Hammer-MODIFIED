@@ -1,0 +1,28 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "ihg:gold_bucket"
+		},
+		"tags": [
+			"workbench",
+			"crafting_table"
+		],
+		"ingredients": [
+			{
+				"item": "minecraft:raw_gold",
+				"count": 8
+			},
+			{
+				"item": "minecraft:bucket",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "ihg:gold_bucket",
+				"count": 1
+			}
+		]
+	}
+}

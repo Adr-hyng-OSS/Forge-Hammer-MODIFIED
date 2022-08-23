@@ -1,0 +1,20 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Forged Hammers",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"green_wool": {
+			"textures": "textures/blocks/wool_colored_green"
+		},
+		"red_wool": {
+			"textures": "textures/blocks/wool_colored_red"
+		},
+		"blue_wool": {
+			"textures": "textures/blocks/wool_colored_blue"
+		},
+		"stick": {
+			"textures": "textures/items/stick"
+		}
+	}
+}

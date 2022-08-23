@@ -1,0 +1,35 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:workbench"
+		},
+		"tags": [
+			"crafting_table",
+			"workbench"
+		],
+		"pattern": [
+			"XWX",
+			"XIX",
+			"XXX"
+		],
+		"key": {
+			"X": {
+				"item": "minecraft:planks",
+				"data": 0
+			},
+			"I": {
+				"item": "minecraft:iron_ingot"
+			},
+			"W": {
+				"item": "minecraft:log",
+				"data": 0
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:workbench"
+			}
+		]
+	}
+}

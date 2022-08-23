@@ -1,0 +1,27 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:iron_hammer"
+		},
+		"tags": [
+			"workbench"
+		],
+		"pattern": [
+			"AB "
+		],
+		"key": {
+			"B_1": {
+				"item": "ihg:iron_hammer_head"
+			},
+			"A": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:iron_hammer"
+			}
+		]
+	}
+}

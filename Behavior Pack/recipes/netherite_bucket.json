@@ -1,0 +1,25 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "ihg:netherite_bucket"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"ingredients": [
+			{
+				"item": "minecraft:netherite_ingot",
+				"count": 1
+			},
+			{
+				"item": "minecraft:bucket"
+			}
+		],
+		"result": [
+			{
+				"item": "ihg:netherite_bucket"
+			}
+		]
+	}
+}

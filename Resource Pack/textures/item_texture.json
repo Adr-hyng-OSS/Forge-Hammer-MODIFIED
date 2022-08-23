@@ -1,0 +1,95 @@
+{
+	"resource_pack_name": "Forged Hammers",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"ihg:wooden_hammer": {
+			"textures": "textures/items/wooden_hammer"
+		},
+		"ihg:stone_hammer": {
+			"textures": "textures/items/stone_hammer"
+		},
+		"ihg:iron_hammer": {
+			"textures": "textures/items/iron_hammer"
+		},
+		"ihg:gold_hammer": {
+			"textures": "textures/items/gold_hammer"
+		},
+		"ihg:diamond_hammer": {
+			"textures": [
+				"textures/items/diamond_hammer"
+			]
+		},
+		"ihg:netherite_hammer": {
+			"textures": "textures/items/netherite_hammer"
+		},
+		"ihg:iron_mal": {
+			"textures": "textures/items/iron_mal"
+		},
+		"ihg:hard_wood_sapling": {
+			"textures": "textures/blocks/dark_sapling"
+		},
+		"ihg:iron_bucket": {
+			"textures": [
+				"textures/items/iron_bucket"
+			]
+		},
+		"ihg:molten_iron": {
+			"textures": [
+				"textures/items/molten_iron"
+			]
+		},
+		"ihg:iron_hammer_head": {
+			"textures": [
+				"textures/items/iron_hammer_head"
+			]
+		},
+		"ihg:diamond_bucket": {
+			"textures": [
+				"textures/items/diamond_bucket"
+			]
+		},
+		"ihg:molten_diamond": {
+			"textures": [
+				"textures/items/molten_diamond"
+			]
+		},
+		"ihg:diamond_hammer_head": {
+			"textures": [
+				"textures/items/diamond_hammer_head"
+			]
+		},
+		"ihg:gold_hammer_head": {
+			"textures": [
+				"textures/items/gold_hammer_head"
+			]
+		},
+		"ihg:netherite_hammer_head": {
+			"textures": "textures/items/netherite_hammer_head"
+		},
+		"ihg:gold_bucket": {
+			"textures": [
+				"textures/items/gold_bucket"
+			]
+		},
+		"ihg:molten_gold": {
+			"textures": [
+				"textures/items/molten_gold"
+			]
+		},
+		"ihg:netherite_bucket": {
+			"textures": [
+				"textures/items/netherite_bucket"
+			]
+		},
+		"ihg:molten_netherite": {
+			"textures": [
+				"textures/items/molten_netherite"
+			]
+		},
+		"creative_hammer": {
+			"textures": [
+				"textures/items/creative_hammer"
+			]
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:forge_press"
+		},
+		"tags": [
+			"crafting_table",
+			"workbench"
+		],
+		"pattern": [
+			"XXX",
+			"XYX",
+			"XIX"
+		],
+		"key": {
+			"X": {
+				"item": "minecraft:polished_blackstone_bricks"
+			},
+			"Y": {
+				"item": "minecraft:piston"
+			},
+			"I": {
+				"item": "minecraft:iron_ingot"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:forge_press"
+			}
+		]
+	}
+}

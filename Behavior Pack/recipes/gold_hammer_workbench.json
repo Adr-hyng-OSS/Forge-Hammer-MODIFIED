@@ -1,0 +1,27 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:gold_hammer"
+		},
+		"tags": [
+			"workbench"
+		],
+		"pattern": [
+			"AB "
+		],
+		"key": {
+			"B_1": {
+				"item": "ihg:gold_hammer_head"
+			},
+			"A": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:gold_hammer"
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:forge"
+		},
+		"tags": [
+			"crafting_table",
+			"workbench"
+		],
+		"pattern": [
+			"XIX",
+			"XYX",
+			"XXX"
+		],
+		"key": {
+			"X": {
+				"item": "minecraft:polished_blackstone_bricks"
+			},
+			"Y": {
+				"item": "minecraft:blast_furnace"
+			},
+			"I": {
+				"item": "minecraft:iron_block"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:forge"
+			}
+		]
+	}
+}

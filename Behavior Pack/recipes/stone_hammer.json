@@ -1,0 +1,29 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:stone_hammer"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"XXX",
+			"XYX",
+			" Y "
+		],
+		"key": {
+			"X": {
+				"item": "minecraft:cobblestone"
+			},
+			"Y": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:stone_hammer"
+			}
+		]
+	}
+}

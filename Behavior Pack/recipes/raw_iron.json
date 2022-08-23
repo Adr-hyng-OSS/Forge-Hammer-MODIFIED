@@ -1,0 +1,29 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:raw_iron"
+		},
+		"tags": [
+			"crafting_table",
+			"workbench"
+		],
+		"pattern": [
+			"X"
+		],
+		"key": {
+			"X": {
+				"item": "ihg:iron_bucket"
+			}
+		},
+		"result": [
+			{
+				"item": "minecraft:raw_iron",
+				"count": 8
+			},
+			{
+				"item": "minecraft:bucket"
+			}
+		]
+	}
+}

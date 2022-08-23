@@ -1,0 +1,27 @@
+{
+	"format_version": 1.12,
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ihg:diamond_hammer"
+		},
+		"tags": [
+			"workbench"
+		],
+		"pattern": [
+			"AB "
+		],
+		"key": {
+			"B": {
+				"item": "ihg:diamond_hammer_head"
+			},
+			"A": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": [
+			{
+				"item": "ihg:diamond_hammer"
+			}
+		]
+	}
+}

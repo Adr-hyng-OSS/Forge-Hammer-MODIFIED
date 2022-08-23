@@ -1,0 +1,680 @@
+{
+	"format_version": "1.17.20",
+	"minecraft:block": {
+		"description": {
+			"identifier": "ihg:forge",
+			"properties": {
+				"ihg:fuel": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				"ihg:material": [
+					0,
+					1,
+					2,
+					3,
+					4
+				],
+				"ihg:done": [
+					0,
+					1,
+					2
+				],
+				"ihg:finished": [
+					false,
+					true
+				],
+				"ihg:block_rotation": [
+					2,
+					3,
+					4,
+					5
+				]
+			}
+		},
+		"components": {
+			"minecraft:on_interact": {
+				"event": "change"
+			},
+			"minecraft:geometry": "geometry.forge",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "polished_blackstone_bricks",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"lava": {
+					"texture": "iron_block",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"forge_top": {
+					"texture": "blackstone",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"furn": {
+					"texture": "blast_furnace_front_off",
+					"render_method": "opaque",
+					"ambient_occlusion": true,
+					"face_dimming": true
+				},
+				"status": {
+					"texture": "red_wool"
+				}
+			},
+			"minecraft:breathability": "air",
+			"tag:forge": {},
+			"minecraft:creative_category": {
+				"category": "Construction"
+			},
+			"minecraft:on_player_placing": {
+				"event": "ihg:update_rotation"
+			},
+			"minecraft:explosion_resistance": 1,
+			"minecraft:destroy_time": 1
+		},
+		"events": {
+			"change": {
+				"sequence": [
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='lava_bucket'",
+						"sequence": [
+							{
+								"condition": "query.block_property('ihg:done')==0&&query.block_property('ihg:fuel')==0",
+								"set_block_property": {
+									"ihg:fuel": 10
+								},
+								"run_command": {
+									"target": "other",
+									"command": [
+										"title @s actionbar Forge Refueld",
+										"playsound bucket.empty_lava @a[r=5] ~ ~ ~ 1"
+									]
+								},
+								"spawn_loot": {
+									"table": "loot_tables/empty_bucket.json"
+								},
+								"decrement_stack": {}
+							},
+							{
+								"condition": "query.block_property('ihg:fuel')>0",
+								"run_command": {
+									"command": [
+										"title @s actionbar Forge not Empty!"
+									],
+									"target": "other"
+								}
+							}
+						]
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='iron_bucket'&&query.block_property('ihg:done')==0",
+						"sequence": [
+							{
+								"condition": "query.block_property('ihg:fuel')==0",
+								"run_command": {
+									"command": [
+										"title @s actionbar No Fuel!"
+									],
+									"target": "other"
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:fuel')>0",
+								"decrement_stack": {},
+								"set_block_property": {
+									"ihg:material": 1,
+									"ihg:done": 1
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							}
+						]
+					},
+					{
+						"condition": "query.block_property('ihg:done')==2",
+						"sequence": [
+							{
+								"condition": "query.block_property('ihg:material')==1",
+								"set_block_property": {
+									"ihg:done": 0,
+									"ihg:material": 0,
+									"ihg:finished": false
+								},
+								"spawn_loot": {
+									"table": "loot_tables/molten_iron.json"
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:material')==2",
+								"set_block_property": {
+									"ihg:done": 0,
+									"ihg:material": 0,
+									"ihg:finished": false
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								},
+								"spawn_loot": {
+									"table": "loot_tables/molten_diamond.json"
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:material')==3",
+								"set_block_property": {
+									"ihg:done": 0,
+									"ihg:material": 0,
+									"ihg:finished": false
+								},
+								"spawn_loot": {
+									"table": "loot_tables/molten_gold.json"
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:material')==4",
+								"set_block_property": {
+									"ihg:done": 0,
+									"ihg:material": 0,
+									"ihg:finished": false
+								},
+								"spawn_loot": {
+									"table": "loot_tables/netherite_molten_bucket.json"
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							}
+						]
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='diamond_bucket'&&query.block_property('ihg:done')==0",
+						"sequence": [
+							{
+								"condition": "query.block_property('ihg:fuel')==0",
+								"run_command": {
+									"command": [
+										"title @s actionbar No Fuel!"
+									],
+									"target": "other"
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:fuel')>0",
+								"decrement_stack": {},
+								"set_block_property": {
+									"ihg:material": 2,
+									"ihg:done": 1
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							}
+						]
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='gold_bucket'&&query.block_property('ihg:done')==0",
+						"sequence": [
+							{
+								"condition": "query.block_property('ihg:fuel')==0",
+								"run_command": {
+									"command": [
+										"title @s actionbar No Fuel!"
+									],
+									"target": "other"
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:fuel')>0",
+								"decrement_stack": {},
+								"set_block_property": {
+									"ihg:material": 3,
+									"ihg:done": 1
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							}
+						]
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand')=='netherite_bucket'&&query.block_property('ihg:done')==0",
+						"sequence": [
+							{
+								"condition": "query.block_property('ihg:fuel')==0",
+								"run_command": {
+									"command": [
+										"title @s actionbar No Fuel!"
+									],
+									"target": "other"
+								}
+							},
+							{
+								"condition": "query.block_property('ihg:fuel')>0",
+								"decrement_stack": {},
+								"set_block_property": {
+									"ihg:material": 4,
+									"ihg:done": 1
+								},
+								"run_command": {
+									"command": [
+										"playsound block.lantern.step @a[r=5] ~ ~ ~ 10"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"change_2": {
+				"sequence": [
+					{
+						"condition": "query.block_property('ihg:material')==1",
+						"run_command": {
+							"command": [
+								"playsound note.chime @a[r=20] ~ ~ ~ 100"
+							]
+						},
+						"set_block_property": {
+							"ihg:done": 2,
+							"ihg:fuel": "query.block_property('ihg:fuel') -1",
+							"ihg:finished": true
+						}
+					},
+					{
+						"condition": "query.block_property('ihg:material')==2",
+						"run_command": {
+							"command": [
+								"playsound note.chime @a[r=20] ~ ~ ~ 100"
+							]
+						},
+						"set_block_property": {
+							"ihg:done": 2,
+							"ihg:fuel": "query.block_property('ihg:fuel') -1",
+							"ihg:finished": true
+						}
+					},
+					{
+						"condition": "query.block_property('ihg:material')==3",
+						"run_command": {
+							"command": [
+								"playsound note.chime @a[r=20] ~ ~ ~ 100"
+							]
+						},
+						"set_block_property": {
+							"ihg:done": 2,
+							"ihg:fuel": "query.block_property('ihg:fuel') -1",
+							"ihg:finished": true
+						}
+					},
+					{
+						"condition": "query.block_property('ihg:material')==4",
+						"run_command": {
+							"command": [
+								"playsound note.chime @a[r=20] ~ ~ ~ 100"
+							]
+						},
+						"set_block_property": {
+							"ihg:done": 2,
+							"ihg:fuel": "query.block_property('ihg:fuel') -1",
+							"ihg:finished": true
+						}
+					}
+				]
+			},
+			"ihg:update_rotation": {
+				"set_block_property": {
+					"ihg:block_rotation": "query.cardinal_facing_2d"
+				}
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('ihg:fuel') > 0 && query.block_property('ihg:done') == 0",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "polished_blackstone_bricks",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"lava": {
+							"texture": "flowing_lava",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"forge_top": {
+							"texture": "blackstone",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"furn": {
+							"texture": "blast_furnace_front_off",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"status": {
+							"texture": "red_wool"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:material') > 0 && query.block_property('ihg:finished') == false",
+				"components": {
+					"minecraft:ticking": {
+						"looping": false,
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "change_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:fuel') > 0 && query.block_property('ihg:done') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "polished_blackstone_bricks",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"lava": {
+							"texture": "flowing_lava",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"forge_top": {
+							"texture": "blackstone",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"furn": {
+							"texture": "blast_furnace_front_off",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"status": {
+							"texture": "blue_wool"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:fuel') > 0 && query.block_property('ihg:done') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "polished_blackstone_bricks",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"lava": {
+							"texture": "flowing_lava",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"forge_top": {
+							"texture": "blackstone",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"furn": {
+							"texture": "blast_furnace_front_off",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"status": {
+							"texture": "green_wool"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:fuel') == 0 && query.block_property('ihg:done') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "polished_blackstone_bricks",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"lava": {
+							"texture": "iron_block",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"forge_top": {
+							"texture": "blackstone",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"furn": {
+							"texture": "blast_furnace_front_off",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"status": {
+							"texture": "green_wool"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:fuel') == 0 && query.block_property('ihg:done') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "polished_blackstone_bricks",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"lava": {
+							"texture": "iron_block",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"forge_top": {
+							"texture": "blackstone",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"furn": {
+							"texture": "blast_furnace_front_off",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"status": {
+							"texture": "blue_wool"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:fuel') == 0 && query.block_property('ihg:done') == 0",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "polished_blackstone_bricks",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"lava": {
+							"texture": "iron_block",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"forge_top": {
+							"texture": "blackstone",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"furn": {
+							"texture": "blast_furnace_front_off",
+							"render_method": "opaque",
+							"ambient_occlusion": true,
+							"face_dimming": true
+						},
+						"status": {
+							"texture": "red_wool"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:fuel') > 0",
+				"components": {
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 1 && query.block_property('ihg:material') == 1",
+				"components": {
+					"minecraft:loot": "loot_tables/iron_bucket_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 2 && query.block_property('ihg:material') == 1",
+				"components": {
+					"minecraft:loot": "loot_tables/molten_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 1 && query.block_property('ihg:material') == 2",
+				"components": {
+					"minecraft:loot": "loot_tables/diamond_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 2 && query.block_property('ihg:material') == 2",
+				"components": {
+					"minecraft:loot": "loot_tables/molten_diamond_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 1 && query.block_property('ihg:material') == 3",
+				"components": {
+					"minecraft:loot": "loot_tables/gold_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 2 && query.block_property('ihg:material') == 3",
+				"components": {
+					"minecraft:loot": "loot_tables/molten_gold_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 1 && query.block_property('ihg:material') == 4",
+				"components": {
+					"minecraft:loot": "loot_tables/netherite_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:done') == 2 && query.block_property('ihg:material') == 4",
+				"components": {
+					"minecraft:loot": "loot_tables/molten_netherite_forge.json"
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 2",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						180,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 3",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 4",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						270,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('ihg:block_rotation') == 5",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						0
+					]
+				}
+			}
+		]
+	}
+}
